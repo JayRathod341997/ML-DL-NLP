@@ -1,0 +1,42 @@
+[project]
+name = "nlp-entity-extraction"
+version = "0.1.0"
+description = "Production NER pipeline with document parsing, entity aggregation, and relation extraction"
+requires-python = ">=3.11"
+dependencies = [
+    "transformers>=4.41",
+    "torch>=2.3",
+    "spacy>=3.7",
+    "pypdf>=4.2",
+    "python-docx>=1.1",
+    "datasets>=2.20",
+    "numpy>=1.26",
+    "pandas>=2.2",
+    "tqdm>=4.66",
+    "rich>=13.7",
+    "pytest>=8.2",
+    "seqeval>=1.2",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.uv]
+dev-dependencies = [
+    "jupyter>=1.0",
+    "ipykernel>=6.29",
+    "pytest-cov>=5.0",
+    "ruff>=0.4",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 88
+
+# NOTE: spaCy English model requires a separate install step:
+# uv run python -m spacy download en_core_web_sm
+# Or via pip URL:
+# uv pip install https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.7.1/en_core_web_sm-3.7.1-py3-none-any.whl

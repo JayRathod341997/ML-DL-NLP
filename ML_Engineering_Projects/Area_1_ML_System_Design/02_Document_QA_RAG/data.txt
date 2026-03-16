@@ -1,0 +1,44 @@
+# Document Q&A RAG — Public Datasets & Document Sources
+
+## Q&A Evaluation Datasets
+# Stanford Question Answering Dataset (SQuAD) — Wikipedia passages + Q&A pairs
+# HuggingFace dataset: rajpurkar/squad
+https://huggingface.co/datasets/rajpurkar/squad
+
+# Natural Questions — real Google search queries + Wikipedia answers
+# HuggingFace dataset: google-research-datasets/natural_questions
+https://huggingface.co/datasets/google-research-datasets/natural_questions
+
+# TriviaQA — reading comprehension with web/wiki evidence
+# HuggingFace dataset: trivia_qa, config="rc.wikipedia"
+https://huggingface.co/datasets/trivia_qa
+
+## Sample PDFs for Ingestion Demo
+# These are freely available research papers — download manually:
+# Attention Is All You Need (Transformers paper)
+https://arxiv.org/pdf/1706.03762
+
+# BERT: Pre-training of Deep Bidirectional Transformers
+https://arxiv.org/pdf/1810.04805
+
+# RAG: Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks
+https://arxiv.org/pdf/2005.11401
+
+# DistilBERT paper
+https://arxiv.org/pdf/1910.01108
+
+## Local LLM (via Ollama — no API key needed)
+# Install Ollama: https://ollama.ai
+# Then pull models:
+#   ollama pull llama3.2:3b    (small, runs on CPU, ~2GB)
+#   ollama pull mistral:7b     (better quality, needs ~8GB RAM)
+#   ollama pull phi3:mini      (very small, fast)
+https://ollama.ai/download
+
+## Embedding Model (auto-downloaded)
+# sentence-transformers/all-MiniLM-L6-v2
+https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2
+
+## Download PDFs for quick demo
+# Place downloaded PDFs in: data/pdfs/
+# Then run: uv run python scripts/ingest_documents.py --dir data/pdfs/

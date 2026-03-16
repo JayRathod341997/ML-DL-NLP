@@ -1,0 +1,45 @@
+# Model Monitoring & Drift Detection — Datasets
+
+## Primary Dataset for Drift Simulation
+# Amazon Reviews — use different product categories as distribution shift
+# Train reference: "raw_review_All_Beauty" (2018-era reviews)
+# Production simulation: same category but recent reviews (drift over time)
+# HuggingFace: McAuley-Lab/Amazon-Reviews-2023
+https://huggingface.co/datasets/McAuley-Lab/Amazon-Reviews-2023
+
+## Concept Drift Simulation (domain shift)
+# IMDB — movie sentiment (training distribution)
+# HuggingFace: imdb
+https://huggingface.co/datasets/imdb
+
+# Yelp Reviews — restaurant sentiment (production distribution = domain shift)
+# HuggingFace: yelp_review_full
+https://huggingface.co/datasets/yelp_review_full
+
+# Drift scenario:
+# 1. Train a model on IMDB (or use pre-trained)
+# 2. Profile reference distribution on IMDB test set
+# 3. Run inference on Yelp test set (concept drift: different domain)
+# 4. Compare prediction distributions → drift detected
+
+## Twitter Sentiment (temporal drift)
+# HuggingFace: carblacac/twitter-sentiment-analysis
+https://huggingface.co/datasets/carblacac/twitter-sentiment-analysis
+
+## Model to Monitor
+# Use fine-tuned model from Project 04 OR:
+https://huggingface.co/distilbert-base-uncased-finetuned-sst-2-english
+
+## Evidently Built-in Datasets (for quick testing, no download needed)
+# from evidently.datasets import DataDefinition, TestDataset
+# These work out-of-the-box for framework testing
+
+## Workflow
+# Step 1: Profile reference data (run once)
+#   uv run python scripts/profile_reference.py --dataset imdb --split test
+#
+# Step 2: Monitor new data (run periodically)
+#   uv run python scripts/monitor_batch.py --dataset yelp_review_full --split test
+#
+# Step 3: View dashboard
+#   uv run python scripts/run_dashboard.py

@@ -1,0 +1,42 @@
+# NLP Entity Extraction — Public Datasets
+
+## NER Training & Evaluation Benchmarks
+# CoNLL-2003 (gold standard NER: PER, ORG, LOC, MISC)
+# HuggingFace dataset: eriktks/conll2003
+https://huggingface.co/datasets/eriktks/conll2003
+
+# OntoNotes 5.0 (18 entity types: DATE, MONEY, CARDINAL, GPE, etc.)
+# HuggingFace dataset: tner/ontonotes5
+https://huggingface.co/datasets/tner/ontonotes5
+
+## Pre-trained NER Models (auto-downloaded via transformers)
+# BERT fine-tuned on CoNLL-2003 (PER, ORG, LOC, MISC)
+# model_name = "dslim/bert-base-NER"
+https://huggingface.co/dslim/bert-base-NER
+
+# DistilBERT for NER (faster, smaller)
+# model_name = "elastic/distilbert-base-uncased-finetuned-conll03-english"
+https://huggingface.co/elastic/distilbert-base-uncased-finetuned-conll03-english
+
+# RoBERTa large NER (highest accuracy)
+# model_name = "Jean-Baptiste/roberta-large-ner-english"
+https://huggingface.co/Jean-Baptiste/roberta-large-ner-english
+
+## Sample Document Corpus for Pipeline Demo
+# Reuters-21578 news articles (text + named entities)
+# HuggingFace dataset: reuters21578, config="ModApte"
+https://huggingface.co/datasets/reuters21578
+
+## Relation Extraction Dataset
+# TACRED (42 relation types between entity pairs)
+# HuggingFace dataset: DFKI-SLT/tacred
+https://huggingface.co/datasets/DFKI-SLT/tacred
+
+## spaCy Model Install
+# After uv sync, install the spaCy English model:
+#   uv run python -m spacy download en_core_web_sm
+# Or via direct pip URL:
+#   uv pip install https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.7.1/en_core_web_sm-3.7.1-py3-none-any.whl
+
+## Test Documents
+# Place any PDF, DOCX, or TXT files in data/documents/ for batch processing

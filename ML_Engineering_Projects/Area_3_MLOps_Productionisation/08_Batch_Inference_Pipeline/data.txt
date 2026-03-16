@@ -1,0 +1,33 @@
+# Batch Inference Pipeline — Public Datasets
+
+## Large Inference Corpus (simulate real production batch job)
+# Amazon Reviews 2023 — millions of product reviews
+# Use specific category for manageable size
+# HuggingFace: McAuley-Lab/Amazon-Reviews-2023, config="raw_review_All_Beauty"
+https://huggingface.co/datasets/McAuley-Lab/Amazon-Reviews-2023
+
+## Medium-scale Alternative
+# Yelp Reviews Full — 650k reviews, 5 sentiment classes
+# HuggingFace: yelp_review_full
+https://huggingface.co/datasets/yelp_review_full
+
+## Small Dataset (for quick testing)
+# IMDB — 50k movie reviews (loads fast)
+# HuggingFace: imdb
+https://huggingface.co/datasets/imdb
+
+## Model for Inference (auto-downloaded)
+# Use the fine-tuned model from Project 04 (if available):
+# --model-path ../04_Text_Classification_BERT/checkpoints/best_model
+#
+# Or use this pre-trained HuggingFace model:
+# distilbert-base-uncased-finetuned-sst-2-english
+https://huggingface.co/distilbert-base-uncased-finetuned-sst-2-english
+
+## Loading data for batch inference:
+# from datasets import load_dataset
+# ds = load_dataset("imdb", split="test")  # 25k samples, fast
+# ds = load_dataset("yelp_review_full", split="test")  # 50k samples, medium
+#
+# For very large datasets, use streaming:
+# ds = load_dataset("McAuley-Lab/Amazon-Reviews-2023", "raw_review_All_Beauty", streaming=True)

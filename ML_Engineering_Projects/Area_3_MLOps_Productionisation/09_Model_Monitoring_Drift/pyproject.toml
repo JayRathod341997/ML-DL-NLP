@@ -1,0 +1,39 @@
+[project]
+name = "model-monitoring-drift"
+version = "0.1.0"
+description = "ML model monitoring with statistical drift detection (KS, PSI, MMD) and Streamlit dashboard"
+requires-python = ">=3.11"
+dependencies = [
+    "evidently>=0.4",
+    "scipy>=1.13",
+    "numpy>=1.26",
+    "pandas>=2.2",
+    "scikit-learn>=1.5",
+    "transformers>=4.41",
+    "torch>=2.3",
+    "streamlit>=1.35",
+    "plotly>=5.22",
+    "datasets>=2.20",
+    "tqdm>=4.66",
+    "rich>=13.7",
+    "pytest>=8.2",
+    "click>=8.1",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.uv]
+dev-dependencies = [
+    "jupyter>=1.0",
+    "ipykernel>=6.29",
+    "pytest-cov>=5.0",
+    "ruff>=0.4",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 88

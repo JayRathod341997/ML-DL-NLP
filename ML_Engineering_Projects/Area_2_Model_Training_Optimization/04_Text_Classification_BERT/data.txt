@@ -1,0 +1,38 @@
+# Text Classification BERT — Public Datasets
+
+## Primary Training Dataset
+# AG News — 4-class news topic classification (120k train, 7.6k test)
+# Classes: 0=World, 1=Sports, 2=Business, 3=Sci/Tech
+# HuggingFace dataset: ag_news
+https://huggingface.co/datasets/ag_news
+
+## Multi-class Alternative
+# DBpedia Ontology Classification (14 classes, 560k train)
+# HuggingFace dataset: dbpedia_14
+https://huggingface.co/datasets/dbpedia_14
+
+## Sentiment (Binary)
+# SST-2 (Stanford Sentiment Treebank, part of GLUE benchmark)
+# HuggingFace dataset: glue, config="sst2"
+https://huggingface.co/datasets/glue
+
+## Long Document Sentiment
+# IMDB Movie Reviews (50k, binary positive/negative)
+# HuggingFace dataset: imdb
+https://huggingface.co/datasets/imdb
+
+## Base Pretrained Model (auto-downloaded via transformers)
+# DistilBERT: 40% smaller than BERT, 60% faster, 97% of BERT's performance
+# model_name = "distilbert-base-uncased"
+https://huggingface.co/distilbert-base-uncased
+
+## Higher Accuracy Alternative
+# BERT base uncased
+# model_name = "bert-base-uncased"
+https://huggingface.co/bert-base-uncased
+
+## Loading data in code:
+# from datasets import load_dataset
+# dataset = load_dataset("ag_news")
+# train_ds = dataset["train"]
+# test_ds = dataset["test"]

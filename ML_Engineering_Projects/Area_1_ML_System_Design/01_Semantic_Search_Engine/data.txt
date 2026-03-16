@@ -1,0 +1,34 @@
+# Semantic Search Engine — Public Datasets
+# Run: uv run python scripts/build_index.py --dataset <name>
+
+## Primary Corpus (documents to index)
+# Wikipedia Simple English (~200k articles, manageable size)
+# HuggingFace dataset: wikimedia/wikipedia, config="20231101.simple"
+https://huggingface.co/datasets/wikimedia/wikipedia
+
+## Evaluation / Retrieval Benchmark
+# MS MARCO Passage Ranking — queries + relevant passages + hard negatives
+# HuggingFace dataset: ms_marco, config="v1.1"
+https://huggingface.co/datasets/ms_marco
+
+## Smaller Corpus (for quick testing and development)
+# AG News — 120k news articles across 4 topics
+# HuggingFace dataset: ag_news
+https://huggingface.co/datasets/ag_news
+
+## Embedding Model (auto-downloaded via sentence-transformers)
+# all-MiniLM-L6-v2 — fast, good quality, 384-dim embeddings
+# Loaded automatically: SentenceTransformer("sentence-transformers/all-MiniLM-L6-v2")
+https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2
+
+## Larger / Higher-quality alternative embedding model
+# all-mpnet-base-v2 — 768-dim, higher quality, slower
+https://huggingface.co/sentence-transformers/all-mpnet-base-v2
+
+## Download instructions
+# The datasets are loaded at runtime via the HuggingFace datasets library:
+#   from datasets import load_dataset
+#   ds = load_dataset("ag_news", split="train")
+#
+# Or stream large datasets without downloading fully:
+#   ds = load_dataset("wikimedia/wikipedia", "20231101.simple", streaming=True)

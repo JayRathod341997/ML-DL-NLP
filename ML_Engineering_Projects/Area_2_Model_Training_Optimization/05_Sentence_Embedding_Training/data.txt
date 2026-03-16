@@ -1,0 +1,42 @@
+# Sentence Embedding Training — Public Datasets
+
+## NLI Data (for MultipleNegativesRankingLoss)
+# SNLI — 570k sentence pairs (entailment/contradiction/neutral)
+# Use entailment pairs as positives for MNRL
+# HuggingFace dataset: stanfordnlp/snli
+https://huggingface.co/datasets/stanfordnlp/snli
+
+# MultiNLI — 393k pairs across 10 genres (fiction, government, telephone, etc.)
+# HuggingFace dataset: nyu-mll/multi_nli
+https://huggingface.co/datasets/nyu-mll/multi_nli
+
+## STS — Semantic Textual Similarity (for evaluation and fine-tuning)
+# STS Benchmark — 8628 sentence pairs with similarity scores 0-5
+# Standard evaluation benchmark for sentence embeddings
+# HuggingFace dataset: sentence-transformers/stsb
+https://huggingface.co/datasets/sentence-transformers/stsb
+
+# STS-12 through STS-16 combined
+# HuggingFace dataset: mteb/sts12-sts
+https://huggingface.co/datasets/mteb/sts12-sts
+
+## MTEB Benchmark (evaluate your model on standard tasks)
+# After training, test on MTEB for an objective comparison
+https://huggingface.co/spaces/mteb/leaderboard
+
+## Base Model (fine-tune from this checkpoint)
+# all-MiniLM-L6-v2 — 384-dim, fast, good baseline
+# SentenceTransformer("sentence-transformers/all-MiniLM-L6-v2")
+https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2
+
+## Alternative Base Models
+# all-mpnet-base-v2 — 768-dim, higher quality
+https://huggingface.co/sentence-transformers/all-mpnet-base-v2
+
+# paraphrase-MiniLM-L3-v2 — smallest, fastest
+https://huggingface.co/sentence-transformers/paraphrase-MiniLM-L3-v2
+
+## Loading data:
+# from datasets import load_dataset
+# snli = load_dataset("stanfordnlp/snli", split="train")
+# stsb = load_dataset("sentence-transformers/stsb", split="validation")

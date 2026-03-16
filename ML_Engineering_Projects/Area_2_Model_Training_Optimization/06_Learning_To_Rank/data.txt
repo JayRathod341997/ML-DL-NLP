@@ -1,0 +1,41 @@
+# Learning to Rank — Public Datasets
+
+## Primary Dataset
+# MS MARCO Passage Ranking (large-scale web search dataset)
+# ~8.8M passages, ~1M queries, sparse binary relevance labels
+# HuggingFace dataset: ms_marco, config="v1.1"
+https://huggingface.co/datasets/ms_marco
+
+## Classic L2R Benchmark (LETOR 4.0)
+# MQ2007: 1,692 queries, 69,623 docs, 5 relevance levels
+# MQ2008: 784 queries, 15,211 docs
+# Features: 46 hand-crafted IR features per (query, doc) pair
+# Download from Microsoft Research:
+https://www.microsoft.com/en-us/research/project/letor-learning-rank-information-retrieval/
+
+## TREC Deep Learning Track 2019/2020
+# Official IR evaluation with NIST relevance judgments
+# Built on top of MS MARCO
+https://microsoft.github.io/msmarco/TREC-Deep-Learning-2019
+
+## BM25 First-Stage Retrieval
+# rank-bm25 library (no external download needed — pip install rank-bm25)
+# Used for first-stage candidate retrieval before reranking
+
+## Cross-Encoder Reranker (auto-downloaded via sentence-transformers)
+# Trained on MS MARCO — use as a strong baseline or starting point
+# model_name = "cross-encoder/ms-marco-MiniLM-L-6-v2"
+https://huggingface.co/cross-encoder/ms-marco-MiniLM-L-6-v2
+
+# Larger, more accurate option:
+# model_name = "cross-encoder/ms-marco-electra-base"
+https://huggingface.co/cross-encoder/ms-marco-electra-base
+
+## Bi-encoder for first-stage retrieval (optional)
+# model_name = "sentence-transformers/msmarco-distilbert-base-tas-b"
+https://huggingface.co/sentence-transformers/msmarco-distilbert-base-tas-b
+
+## Loading MSMARCO:
+# from datasets import load_dataset
+# ds = load_dataset("ms_marco", "v1.1", split="train")
+# Each row: {"query": str, "passages": {"passage_text": [...], "is_selected": [...]}}

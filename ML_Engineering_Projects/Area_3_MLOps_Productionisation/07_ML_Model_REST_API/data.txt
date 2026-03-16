@@ -1,0 +1,24 @@
+# ML Model REST API — Models to Serve
+
+## Default Model (sentiment classification, binary)
+# distilbert-base-uncased fine-tuned on SST-2 (POSITIVE/NEGATIVE)
+# Loads automatically: pipeline("text-classification", model=...)
+https://huggingface.co/distilbert-base-uncased-finetuned-sst-2-english
+
+## Alternative: Use your fine-tuned model from Project 04
+# Set MODEL_NAME to the path of your saved checkpoint:
+# MODEL_NAME=../04_Text_Classification_BERT/checkpoints/best_model
+
+## Sentence Embedding Model (alternative model type)
+# Set MODEL_TYPE=embedding in .env
+https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2
+
+## Test Data for Load Testing
+# IMDB test set — diverse real-world sentiment texts
+# HuggingFace: imdb (test split, 25k reviews)
+https://huggingface.co/datasets/imdb
+
+## Load Testing
+# scripts/load_test.py uses Locust to simulate concurrent requests
+# Install: already included in pyproject.toml
+# Run: uv run locust -f scripts/load_test.py --headless -u 10 -r 2 --run-time 30s

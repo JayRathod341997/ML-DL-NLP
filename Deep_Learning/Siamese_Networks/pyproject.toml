@@ -1,0 +1,10 @@
+[project]
+name = "siamese-tutorial"
+version = "0.1.0"
+description = "Siamese Networks Tutorial"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = ["torch>=2.0.0"]
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
