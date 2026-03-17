@@ -60,15 +60,15 @@ Classification Example (K=3)
 
 ## When to Use KNN?
 
-✅ When you have CLEAR clusters in your data
-✅ When you need SIMPLE and interpretable results
-✅ When data is not too big (KNN is slow!)
+ When you have CLEAR clusters in your data
+ When you need SIMPLE and interpretable results
+ When data is not too big (KNN is slow!)
 
 ## When NOT to Use KNN?
 
-❌ When you have LOTS of data (it's slow)
-❌ When features have VERY DIFFERENT scales
-❌ When there's no clear "nearness" in your data
+ When you have LOTS of data (it's slow)
+ When features have VERY DIFFERENT scales
+ When there's no clear "nearness" in your data
 
 ## The Magic of K
 

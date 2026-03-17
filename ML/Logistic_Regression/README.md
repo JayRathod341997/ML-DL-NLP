@@ -59,15 +59,15 @@ This curve always gives a number between 0 and 1:
 
 ## When to Use Logistic Regression?
 
-✅ When you want to classify things into groups (YES/NO, CAT/DOG)
-✅ When you need to know the PROBABILITY (70% chance of rain)
-✅ When the relationship is NOT a straight line (it's S-shaped)
+ When you want to classify things into groups (YES/NO, CAT/DOG)
+ When you need to know the PROBABILITY (70% chance of rain)
+ When the relationship is NOT a straight line (it's S-shaped)
 
 ## When NOT to Use Logistic Regression?
 
-❌ When you want to predict a number (use Linear Regression instead)
-❌ When you have more than 2 categories (use other methods)
-❌ When data is very messy or has complex patterns
+ When you want to predict a number (use Linear Regression instead)
+ When you have more than 2 categories (use other methods)
+ When data is very messy or has complex patterns
 
 ## Fun Fact!
 

@@ -133,7 +133,7 @@ plt.savefig("ML/Decision_Tree/decision_tree_plot.png", dpi=150, bbox_inches="tig
 plt.close()
 
 print("\n" + "=" * 60)
-print("✅ Decision Tree Visualization saved to:")
+print(" Decision Tree Visualization saved to:")
 print("   ML/Decision_Tree/decision_tree_plot.png")
 print("=" * 60)
 

@@ -61,15 +61,15 @@ Linear SVM (Straight Line)
 
 ## When to Use SVM?
 
-✅ When you have CLEAR separation between classes
-✅ When you have HIGH-DIMENSIONAL data
-✅ When you need ACCURATE classification
+ When you have CLEAR separation between classes
+ When you have HIGH-DIMENSIONAL data
+ When you need ACCURATE classification
 
 ## When NOT to Use SVM?
 
-❌ When data overlaps a lot
-❌ When you have lots of data (slow)
-❌ When you need probability outputs
+ When data overlaps a lot
+ When you have lots of data (slow)
+ When you need probability outputs
 
 ## Types of SVM
 

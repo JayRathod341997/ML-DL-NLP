@@ -60,16 +60,16 @@ We reduced 2D to 1D while keeping most information!
 
 ## When to Use PCA?
 
-✅ When you have MANY features (high-dimensional data)
-✅ When you want to VISUALIZE data
-✅ When you want to COMPRESS data
-✅ When features are CORRELATED
+ When you have MANY features (high-dimensional data)
+ When you want to VISUALIZE data
+ When you want to COMPRESS data
+ When features are CORRELATED
 
 ## When NOT to Use PCA?
 
-❌ When you need to keep ALL original features
-❌ When data is already simple (1-2 dimensions)
-❌ When interpretability matters
+ When you need to keep ALL original features
+ When data is already simple (1-2 dimensions)
+ When interpretability matters
 
 ## Key Concepts
 

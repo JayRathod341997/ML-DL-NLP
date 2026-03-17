@@ -236,7 +236,7 @@ plt.savefig("ML/Support_Vector_Machine/svm_plot.png", dpi=150, bbox_inches="tigh
 plt.close()
 
 print("\n" + "=" * 60)
-print("✅ Visualization saved to:")
+print(" Visualization saved to:")
 print("   ML/Support_Vector_Machine/svm_plot.png")
 print("=" * 60)
 

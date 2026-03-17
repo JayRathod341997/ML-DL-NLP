@@ -60,16 +60,16 @@ The higher probability wins!
 
 ## When to Use Naive Bayes?
 
-✅ When you have MANY FEATURES (like words)
-✅ When you need FAST predictions
-✅ When features are INDEPENDENT
-✅ When you have LIMITED data
+ When you have MANY FEATURES (like words)
+ When you need FAST predictions
+ When features are INDEPENDENT
+ When you have LIMITED data
 
 ## When NOT to Use Naive Bayes?
 
-❌ When features are RELATED (not independent)
-❌ When you need very high accuracy
-❌ When relationships between features matter
+ When features are RELATED (not independent)
+ When you need very high accuracy
+ When relationships between features matter
 
 ## Types of Naive Bayes
 

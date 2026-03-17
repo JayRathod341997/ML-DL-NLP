@@ -239,6 +239,6 @@ plt.savefig("ML/K_Nearest_Neighbors/knn_plot.png", dpi=150, bbox_inches="tight")
 plt.close()
 
 print("\n" + "=" * 60)
-print("✅ Visualization saved to:")
+print(" Visualization saved to:")
 print("   ML/K_Nearest_Neighbors/knn_plot.png")
 print("=" * 60)

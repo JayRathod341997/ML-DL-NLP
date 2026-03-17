@@ -65,15 +65,15 @@ Step 3: Final Groups
 
 ## When to Use K-Means?
 
-✅ When you want to FIND GROUPS in data (unsupervised)
-✅ When you know HOW MANY groups you want
-✅ When clusters are SPHERICAL (round-ish)
+ When you want to FIND GROUPS in data (unsupervised)
+ When you know HOW MANY groups you want
+ When clusters are SPHERICAL (round-ish)
 
 ## When NOT to Use K-Means?
 
-❌ When you don't know how many clusters
-❌ When clusters have weird shapes
-❌ When clusters are very DIFFERENT SIZES
+ When you don't know how many clusters
+ When clusters have weird shapes
+ When clusters are very DIFFERENT SIZES
 
 ## The "K" in K-Means
 

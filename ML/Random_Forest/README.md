@@ -62,16 +62,16 @@ This is called "Ensemble Learning" - many weak learners combine to make a strong
 
 ## When to Use Random Forest?
 
-✅ When you need HIGH ACCURACY
-✅ When data has lots of features
-✅ When you want to know which features are important
-✅ When data might have noise or missing values
+ When you need HIGH ACCURACY
+ When data has lots of features
+ When you want to know which features are important
+ When data might have noise or missing values
 
 ## When NOT to Use Random Forest?
 
-❌ When you need EXPLAINABLE decisions (it's a "black box")
-❌ When data is simple and a single tree works fine
-❌ When prediction speed matters (it's slower than one tree)
+ When you need EXPLAINABLE decisions (it's a "black box")
+ When data is simple and a single tree works fine
+ When prediction speed matters (it's slower than one tree)
 
 ## Fun Fact!
 

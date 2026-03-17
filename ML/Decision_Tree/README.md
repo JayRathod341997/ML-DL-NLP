@@ -55,16 +55,16 @@ The tree has:
 
 ## When to Use Decision Trees?
 
-✅ When you need EXPLAINABLE decisions (people can understand why)
-✅ When data has YES/NO or CATEGORICAL features
-✅ When you want to visualize the decision process
-✅ When data might have missing values
+ When you need EXPLAINABLE decisions (people can understand why)
+ When data has YES/NO or CATEGORICAL features
+ When you want to visualize the decision process
+ When data might have missing values
 
 ## When NOT to Use Decision Trees?
 
-❌ When you need very accurate predictions
-❌ When data is mostly numerical and continuous
-❌ When small changes in data cause big changes in the tree
+ When you need very accurate predictions
+ When data is mostly numerical and continuous
+ When small changes in data cause big changes in the tree
 
 ## Fun Fact!
 

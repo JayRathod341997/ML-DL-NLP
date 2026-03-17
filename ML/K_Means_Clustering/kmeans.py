@@ -194,7 +194,7 @@ plt.savefig("ML/K_Means_Clustering/kmeans_plot.png", dpi=150, bbox_inches="tight
 plt.close()
 
 print("\n" + "=" * 60)
-print("✅ Visualization saved to:")
+print(" Visualization saved to:")
 print("   ML/K_Means_Clustering/kmeans_plot.png")
 print("=" * 60)
 

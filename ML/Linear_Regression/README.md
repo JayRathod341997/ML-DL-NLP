@@ -44,15 +44,15 @@ Where:
 
 ## When to Use Linear Regression?
 
-✅ When you want to predict a NUMBER
-✅ When you think two things are related (one goes up, other goes up or down)
-✅ When the relationship looks like a straight line
+ When you want to predict a NUMBER
+ When you think two things are related (one goes up, other goes up or down)
+ When the relationship looks like a straight line
 
 ## When NOT to Use Linear Regression?
 
-❌ When you want to predict categories (like cat or dog)
-❌ When the relationship is curved or complicated
-❌ When you have very few data points
+ When you want to predict categories (like cat or dog)
+ When the relationship is curved or complicated
+ When you have very few data points
 
 ## Fun Fact!
 

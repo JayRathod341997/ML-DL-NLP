@@ -153,7 +153,7 @@ plt.savefig(
 plt.close()
 
 print("\n" + "=" * 60)
-print("✅ Visualization saved to:")
+print(" Visualization saved to:")
 print("   ML/Logistic_Regression/logistic_regression_plot.png")
 print("=" * 60)
 
