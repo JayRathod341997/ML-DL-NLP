@@ -1,0 +1,53 @@
+# SVM Image Classification Configuration
+
+# Data paths
+data:
+  train_path: "data/raw/train"
+  test_path: "data/raw/test"
+  output_path: "data/processed"
+  
+# Model configuration
+model:
+  name: "SVM_Classifier"
+  kernel: "rbf"  # Options: linear, poly, rbf, sigmoid
+  C: 1.0  # Regularization parameter
+  gamma: "scale"  # Kernel coefficient
+  degree: 3  # Degree for polynomial kernel
+  probability: true
+  
+# Training configuration
+training:
+  test_size: 0.2
+  random_state: 42
+  cv_folds: 5
+  
+# Hyperparameter tuning
+hyperparameters:
+  C: [0.1, 1, 10, 100]
+  gamma: ["scale", "auto", 0.01, 0.1, 1]
+  kernel: ["rbf", "linear", "poly"]
+  
+# Feature extraction
+features:
+  image_size: [64, 64]
+  color_space: "RGB"  # RGB, HSV, Grayscale
+  histogram_bins: 256
+  
+# Evaluation metrics
+evaluation:
+  metrics:
+    - accuracy
+    - precision
+    - recall
+    - f1_score
+    - confusion_matrix
+    
+# Model persistence
+model_path: "models/svm_model.pkl"
+scaler_path: "models/scaler.pkl"
+
+# Logging
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file: "logs/svm_training.log"

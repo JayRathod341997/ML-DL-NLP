@@ -1,0 +1,52 @@
+# K-Means Customer Segmentation Configuration
+
+# Data paths
+data:
+  train_path: "data/raw/customers.csv"
+  output_path: "data/processed"
+
+# Model configuration
+model:
+  name: "KMeans_Clustering"
+  n_clusters: 5  # Number of clusters
+  init: "k-means++"  # Initialization method: k-means++, random
+  n_init: 10  # Number of times to run with different seeds
+  max_iter: 300  # Maximum iterations
+  tol: 0.0001  # Tolerance for convergence
+  algorithm: "lloyd"  # Algorithm: lloyd, elkan
+
+# Feature columns for clustering
+features:
+  numerical:
+    - "age"
+    - "annual_income"
+    - "spending_score"
+  categorical: []
+
+# Preprocessing
+preprocessing:
+  scale: true
+  scale_method: "standard"  # standard, minmax, robust
+
+# Evaluation
+evaluation:
+  metrics:
+    - silhouette_score
+    - calinski_harabasz_score
+    - davies_bouldin_score
+
+# Hyperparameter tuning
+hyperparameters:
+  n_clusters_range: [2, 10]
+  init: ["k-means++", "random"]
+  n_init: [5, 10, 20]
+
+# Model persistence
+model_path: "models/kmeans_model.pkl"
+scaler_path: "models/scaler.pkl"
+
+# Logging
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file: "logs/kmeans_training.log"

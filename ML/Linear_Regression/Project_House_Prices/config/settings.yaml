@@ -1,0 +1,29 @@
+# Configuration for Linear Regression House Price Prediction Model
+
+model:
+  name: "Ridge"
+  params:
+    fit_intercept: true
+    normalize: false
+    alpha: 1.0
+
+data:
+  train_path: "data/raw/train.csv"
+  test_path: "data/raw/test.csv"
+  target_column: "SalePrice"
+  test_size: 0.2
+  random_state: 42
+
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  log_dir: "logs"
+
+preprocessing:
+  handle_missing: true
+  encode_categorical: true
+  scale_features: true
+
+training:
+  cv_folds: 5
+  early_stopping: false

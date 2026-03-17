@@ -1,120 +1,89 @@
-# Naive Bayes - Interview Questions
+# Naive Bayes - Interview Questions & System Design
 
-## Basic Questions
+## Fundamentals
 
-### Q1: What is Naive Bayes?
-**Answer:** Naive Bayes is a classification algorithm based on Bayes' theorem with the "naive" assumption of conditional independence between features. It calculates the probability of each class given the features and selects the class with the highest probability.
+### What is Naive Bayes?
 
-### Q2: What is Bayes' theorem?
-**Answer:** Bayes' theorem calculates conditional probability:
+Probabilistic classifier based on Bayes' theorem with "naive" independence assumption between features.
+
+### Bayes' Theorem
+
 ```
 P(Class|Features) = P(Features|Class) × P(Class) / P(Features)
 ```
-Where:
-- P(Class|Features): Posterior probability
-- P(Features|Class): Likelihood
-- P(Class): Prior probability
 
-### Q3: Why is it called "Naive"?
-**Answer:** It's called "naive" because it assumes that all features are conditionally independent of each other given the class. This assumption rarely holds in real data but simplifies calculations significantly.
+### Types of Naive Bayes
 
-### Q4: What are the types of Naive Bayes?
-**Answer:**
-- **Gaussian:** For continuous features (assumes normal distribution)
-- **Multinomial:** For text/count data (word frequencies)
-- **Bernoulli:** For binary features
-- **Categorical:** For categorical features with multinomial distribution
+| Type | Use Case |
+|------|----------|
+| Gaussian | Continuous features |
+| Multinomial | Text/count data |
+| Bernoulli | Binary features |
+| Categorical | Categorical features |
 
-### Q5: Why is Naive Bayes fast?
-**Answer:**
-- No iterative optimization
-- Simple probability calculations
-- Feature independence assumption simplifies computation
-- Can train on small datasets quickly
+---
 
-## Intermediate Questions
+## Production Issues
 
-### Q6: What are the advantages of Naive Bayes?
-**Answer:**
-- Very fast training and prediction
-- Simple to understand
-- Works well with high-dimensional data
-- Handles missing values well
-- Good baseline model
+### 1. Zero Probability
 
-### Q7: What are the disadvantages of Naive Bayes?
-**Answer:**
-- Strong independence assumption (rarely true)
-- Cannot learn relationships between features
-- Zero probability problem (smoothing needed)
-- May not perform well when features are correlated
+**Problem**: unseen feature values cause zero probability
 
-### Q8: How do you handle the zero probability problem?
-**Answer:** Use Laplace (additive) smoothing:
+**Solutions**:
+- Laplace smoothing (add-one smoothing)
+- Bayesian smoothing
+
+### 2. Feature Independence
+
+**Problem**: Naive assumption rarely true
+
+**Solutions**:
+- Feature selection
+- Use domain knowledge
+- Consider other algorithms
+
+### 3. Underflow
+
+**Problem**: Multiplying many small probabilities
+
+**Solutions**:
+- Use log probabilities
+- Work in log space
+
+---
+
+## Short Q&A
+
+| Question | Answer |
+|----------|--------|
+| **Why is it called "naive"?** | Assumes feature independence |
+| **When is Naive Bayes good?** | Text classification, spam detection, quick baseline |
+| **What is Laplace smoothing?** | Adding 1 to counts to avoid zero probabilities |
+| **What is the time complexity?** | O(n × d × c) for training, O(d) for prediction |
+| **Does it need feature scaling?** | No - uses probabilities |
+| **What are its advantages?** | Fast, works with small data, handles many features |
+
+---
+
+## Follow-up Questions
+
+### How would you apply Naive Bayes to text classification?
+
 ```
-P(xᵢ|c) = (count(xᵢ,c) + α) / (count(c) + α×|V|)
+1. Text Preprocessing
+   - Tokenization
+   - Remove stopwords
+   - Stemming/lemmatization
+
+2. Feature Extraction
+   - TF-IDF vectorization
+   - Bag of words
+
+3. Model Training
+   - Use MultinomialNB
+   - Apply Laplace smoothing
+
+4. Optimization
+   - Feature selection
+   - Parameter tuning
 ```
-where α is smoothing parameter, |V| is vocabulary size.
-
-### Q9: When should you use Naive Bayes?
-**Answer:**
-- Text classification (spam detection, sentiment analysis)
-- High-dimensional data
-- As a baseline model
-- When speed is important
-- When independence assumption roughly holds
-
-### Q10: What is the difference between Naive Bayes and Logistic Regression?
-**Answer:**
-| Naive Bayes | Logistic Regression |
-|-------------|-------------------|
-| Generative model | Discriminative model |
-| Estimates P(Features|Class) | Estimates P(Class|Features) |
-| Assumes feature independence | No independence assumption |
-| Faster | More accurate generally |
-| May underfit | Better fit to data |
-
-## Advanced Questions
-
-### Q11: Does Naive Bayes handle missing values?
-**Answer:** Yes, it handles missing values naturally:
-- For training: Skip the missing feature in probability calculation
-- For prediction: Ignore the missing feature
-
-### Q12: Can Naive Bayes be used for regression?
-**Answer:** Not typically. Naive Bayes is primarily a classification algorithm. However, you can adapt it for regression by predicting the expected value using probability distributions.
-
-### Q13: How does Gaussian Naive Bayes work with continuous features?
-**Answer:** It assumes each class follows a normal distribution:
-- For each class, estimate mean and variance of each feature
-- Use Gaussian probability density function to calculate likelihood
-- Apply Bayes' theorem for final prediction
-
-### Q14: What is the difference between Multinomial and Bernoulli Naive Bayes?
-**Answer:**
-- **Multinomial:** Uses count data (e.g., word frequencies in documents)
-- **Bernoulli:** Uses binary features (feature present or not)
-- Bernoulli can work with features that are simply present/absent
-
-### Q15: Why does Naive Bayes work well despite the independence assumption?
-**Answer:** Even though the independence assumption is rarely true, Naive Bayes:
-- Still ranks classes correctly (not exact probabilities)
-- Is robust to irrelevant features
-- Works well for classification even with correlated features
-- The errors from wrong independence often cancel out
-
-## Scenario-Based Questions
-
-### Q16: Your Naive Bayes model has very low accuracy. What might be wrong?
-**Answer:**
-- Features are highly correlated
-- Independence assumption doesn't hold
-- Need feature engineering
-- Consider using another classifier
-
-### Q17: In spam detection, Naive Bayes assigns high probability to spam but marks legitimate email as spam. Why?
-**Answer:** This is likely because:
-- Certain words are too dominant
-- Prior probability of spam is too high
-- Need to tune threshold
-- Consider using class weights

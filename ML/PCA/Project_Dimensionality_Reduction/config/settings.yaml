@@ -1,0 +1,23 @@
+# PCA Dimensionality Reduction Configuration
+
+data:
+  train_path: "data/raw/data.csv"
+  output_path: "data/processed"
+
+model:
+  name: "PCA"
+  n_components: 0.95  # Retain 95% variance
+  whiten: false
+  svd_solver: "auto"
+
+training:
+  test_size: 0.2
+  random_state: 42
+
+model_path: "models/pca_model.pkl"
+scaler_path: "models/scaler.pkl"
+
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file: "logs/pca_training.log"

@@ -1,0 +1,41 @@
+# Naive Bayes Spam Detection Configuration
+
+# Data paths
+data:
+  train_path: "data/raw/emails.csv"
+  test_path: "data/raw/test_emails.csv"
+  output_path: "data/processed"
+
+# Model configuration
+model:
+  name: "NaiveBayes_SpamDetector"
+  variant: "multinomial"  # multinomial, bernoulli, gaussian
+  alpha: 1.0  # Laplace smoothing
+
+# Text preprocessing
+preprocessing:
+  lowercase: true
+  remove_stopwords: true
+  stemming: true
+  min_word_length: 3
+
+# Feature extraction
+features:
+  vectorizer: "tfidf"  # tfidf, count
+  max_features: 5000
+  ngram_range: [1, 2]
+
+# Training configuration
+training:
+  test_size: 0.2
+  random_state: 42
+
+# Model persistence
+model_path: "models/naive_bayes_model.pkl"
+vectorizer_path: "models/vectorizer.pkl"
+
+# Logging
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file: "logs/spam_detection.log"

@@ -1,0 +1,52 @@
+# Configuration for Credit Scoring Model
+
+# Model Parameters
+model:
+  name: "DecisionTreeClassifier"
+  max_depth: 5
+  min_samples_split: 10
+  min_samples_leaf: 5
+  criterion: "gini"
+  random_state: 42
+
+# Data Parameters
+data:
+  source: "https://raw.githubusercontent.com/.../credit_risk.csv"
+  target_column: "default"
+  test_size: 0.2
+  random_state: 42
+  handle_missing: "mean"
+
+# Preprocessing
+preprocessing:
+  scale_features: false  # Decision trees don't need scaling
+  encode_categorical: true
+  outlier_threshold: 3
+
+# Training Parameters
+training:
+  cv_folds: 5
+  scoring: "accuracy"
+  n_jobs: -1
+
+# Logging
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file: "logs/training.log"
+  console: true
+
+# Azure Configuration
+azure:
+  workspace_name: "credit-scoring-workspace"
+  compute_target: "cpu-cluster"
+  experiment_name: "credit-decision-tree"
+  model_name: "credit-scoring-model"
+  service_name: "credit-scoring-service"
+
+# API Configuration
+api:
+  host: "0.0.0.0"
+  port: 8000
+  workers: 4
+  timeout: 30

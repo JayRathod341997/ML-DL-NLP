@@ -1,97 +1,133 @@
-# K-Nearest Neighbors - Interview Questions
+# K-Nearest Neighbors - Interview Questions & System Design
 
-## Basic Questions
+## Fundamentals
 
-### Q1: What is K-Nearest Neighbors (KNN)?
-**Answer:** KNN is a simple, instance-based learning algorithm that classifies new data points based on the majority class of their K nearest neighbors in the training data. It doesn't have an explicit training phase - it simply stores the training data.
+### What is KNN?
 
-### Q2: Why is KNN called a "lazy" algorithm?
-**Answer:** KNN is called "lazy" because it doesn't learn a discriminative function from training data. Instead, it memorizes the entire training dataset and performs all computation at prediction time.
+K-Nearest Neighbors is a simple, instance-based learning algorithm that classifies new data points based on similarity to training data.
 
-### Q3: How does KNN make predictions?
-**Answer:**
-1. Calculate distance between the new point and all training points
-2. Find the K nearest neighbors
-3. For classification: Take majority vote of neighbor classes
-4. For regression: Average the values of K neighbors
+### How does KNN work?
 
-### Q4: What are the different distance metrics used in KNN?
-**Answer:**
-- Euclidean distance: √(Σ(xᵢ-yᵢ)²)
-- Manhattan distance: Σ|xᵢ-yᵢ|
-- Minkowski distance: (Σ|xᵢ-yᵢ|^p)^(1/p)
-- Hamming distance: For categorical features
+1. Choose K (number of neighbors)
+2. Calculate distance to all training points
+3. Find K nearest neighbors
+4. Vote/average their labels
 
-### Q5: How do you choose the value of K?
-**Answer:**
-- Small K: Sensitive to noise, can overfit
-- Large K: Smoother decision boundary, can underfit
-- Use cross-validation to find optimal K
-- Odd K for binary classification to avoid ties
+### Key Hyperparameters
 
-## Intermediate Questions
+| Parameter | Description |
+|-----------|-------------|
+| `n_neighbors` (K) | Number of neighbors |
+| `weights` | 'uniform' or 'distance' |
+| `metric` | Distance metric (euclidean, manhattan, minkowski) |
+| `p` | Power parameter for Minkowski |
 
-### Q6: What is the curse of dimensionality in KNN?
-**Answer:** As the number of dimensions (features) increases, the distance between points becomes less meaningful. In high dimensions, all points become equally distant. This makes KNN less effective.
+### Distance Metrics
 
-### Q7: Why is feature scaling important in KNN?
-**Answer:** KNN uses distance calculations. Features with larger scales dominate the distance, making the algorithm biased. Feature scaling (normalization or standardization) ensures all features contribute equally.
+- **Euclidean**: √(Σ(xi-yi)²)
+- **Manhattan**: Σ|xi-yi|
+- **Minkowski**: (Σ|xi-yi|^p)^(1/p)
 
-### Q8: What are the advantages of KNN?
-**Answer:**
-- Simple to understand and implement
-- No training phase (fast to set up)
-- Naturally handles multi-class classification
-- No assumptions about data distribution
-- Can be used for both classification and regression
+---
 
-### Q9: What are the disadvantages of KNN?
-**Answer:**
-- Slow prediction for large datasets
-- Sensitive to irrelevant features
-- Sensitive to noise and outliers
-- Requires feature scaling
-- Memory-intensive (stores all training data)
-- Doesn't work well with high-dimensional data
+## System Design
 
-### Q10: How does K handle imbalanced data?
-**Answer:**
-- Use weighted voting (closer neighbors have more weight)
-- Use stratified sampling for neighbors
-- Use appropriate K values
-- Consider using different metrics
+### Production Architecture
 
-## Advanced Questions
+```
+┌─────────────┐     ┌─────────────┐     ┌─────────────┐
+│   Request   │────▶│   Feature   │────▶│   KNN      │
+│   API       │     │   Compute   │     │   Search   │
+└─────────────┘     └─────────────┘     └─────────────┘
+                                               │
+                    ┌──────────────────────────┘
+                    ▼
+            ┌─────────────┐
+            │   Result    │
+            │   Voting    │
+            └─────────────┘
+```
 
-### Q11: What is the difference between weighted and unweighted KNN?
-**Answer:**
-- **Unweighted:** Each neighbor has equal vote
-- **Weighted:** Closer neighbors have more influence (typically 1/distance)
+---
 
-### Q12: How do you handle missing values in KNN?
-**Answer:**
-1. Impute missing values before using KNN
-2. Use distance metrics that handle missing values
-3. Ignore missing values in distance calculation
-4. Use KNNImputer for imputation
+## Production Issues
 
-### Q13: When should you use KNN?
-**Answer:**
-- Small to medium datasets
-- When interpretability is important
-- As a baseline model
-- When decision boundary is complex
-- When data has meaningful distance metrics
+### 1. Slow Prediction
 
-### Q14: How does KNN work for regression?
-**Answer:** For regression, KNN predicts a continuous value by averaging the target values of the K nearest neighbors. Weighted averaging can also be used.
+**Problem**: O(n) time complexity for each prediction
 
-### Q15: What is the difference between KNN and K-Means?
-**Answer:**
-| KNN | K-Means |
-|-----|---------|
-| Supervised learning | Unsupervised learning |
-| Uses labeled data | Uses unlabeled data |
-| Classification/Regression | Clustering |
-| K = number of neighbors | K = number of clusters |
-| Lazy learner | Eager learner |
+**Solutions**:
+- Use KD-Tree or Ball-Tree
+- Dimensionality reduction
+- Approximate nearest neighbors (FAISS)
+- Feature hashing
+
+### 2. Curse of Dimensionality
+
+**Problem**: Distance metrics become meaningless in high dimensions
+
+**Solutions**:
+- PCA for dimensionality reduction
+- Feature selection
+- Use appropriate K
+
+### 3. Feature Scaling
+
+**Problem**: Features with large ranges dominate
+
+**Solutions**:
+- StandardScaler
+- MinMaxScaler
+
+---
+
+## Short Q&A
+
+| Question | Answer |
+|----------|--------|
+| **What is the best K value?** | Use cross-validation; odd K for binary classification |
+| **Why use distance-weighted voting?** | Closer neighbors have more influence |
+| **When is KNN not suitable?** | Large datasets, high dimensions, sparse data |
+| **What is the difference between KNN classification and regression?** | Classification uses majority vote; regression uses mean/average |
+| **How do you handle categorical features?** | Use Hamming distance or one-hot encode |
+| **What is the time complexity?** | O(n * d) for brute force, O(n log n) with KD-Tree |
+| **Is KNN parametric or non-parametric?** | Non-parametric - no assumptions about data distribution |
+
+---
+
+## Follow-up Questions
+
+### How would you optimize KNN for large datasets?
+
+```
+1. Algorithmic Optimizations
+   - Use Ball-Tree or KD-Tree
+   - Approximate nearest neighbors (ANN)
+   - Use FAISS library
+
+2. Data Optimizations
+   - Reduce dimensionality with PCA
+   - Feature selection
+   - Data subsampling
+
+3. System Optimizations
+   - In-memory data with Redis
+   - Batch prediction
+   - Precompute distances
+```
+
+### How do you choose K value?
+
+```
+1. Cross-validation
+   - Try K from 1 to sqrt(n)
+   - Select K with best CV score
+
+2. Elbow Method
+   - Plot error vs K
+   - Choose K at the "elbow"
+
+3. Consider Class Balance
+   - Use odd K for binary classification
+   - Consider class weights
+```
